@@ -1,29 +1,4 @@
-let myLibrary = [
-    // {
-    //     title : 'The Great Gatsby',
-    //     author : 'F. Scott Fitzgerald',
-    //     pages : 164,
-    //     read : 'Read'
-    // },
-    // {
-    //     title : 'To Kill a Mockingbird',
-    //     author : 'Harper Lee',
-    //     pages : 230,
-    //     read : 'Read'
-    // },
-    // {
-    //     title : 'Beloved',
-    //     author : 'Toni Morrison',
-    //     pages : 170,
-    //     read : 'Not read'
-    // },
-    // {
-    //     title : 'Lord of the flies',
-    //     author : 'William Golding',
-    //     pages : 143,
-    //     read : 'Not read'
-    // }
-];
+let myLibrary = [];
 
 // book constructor
 function Book(title, author, pages, read) {
