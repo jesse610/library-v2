@@ -97,6 +97,7 @@ a
 
 .main {
     height: 100%;
+    padding-bottom: 10px;
 }
 
 .read-btn,
