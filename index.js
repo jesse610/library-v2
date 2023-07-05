@@ -1,4 +1,5 @@
 import { formValidation } from "./formValidation.js";
+import { retrieveLocalStorage, storeLocalStorage } from "./storage.js";
 
 // book constructor
 class Book {
@@ -11,7 +12,7 @@ class Book {
 }
 
 const library = {
-    myLibrary: [],
+    myLibrary: null,
     bookFF: null,
     addBookForm: null,
     addBookBtn:  null,
@@ -34,6 +35,7 @@ const library = {
         this.readInput = document.querySelector('#read')
         this.main = document.querySelector('.main')
         this.cardsContainer = document.querySelector('.cards')
+        this.myLibrary = this.getStored()
         this.addBookForm.addEventListener('submit', (e) => {
             e.preventDefault()
             this.handleFormSubmit(this.addBookForm, this.readInput, this.myLibrary, this.addNewBookBtn)
@@ -53,6 +55,16 @@ const library = {
         this.pagesInput.addEventListener('input', () => {
             formValidation.checkPages(this.pagesInput)
         })
+        this.displayLibrary()
+    },
+
+    getStored() {
+        if (retrieveLocalStorage())
+        {
+            return retrieveLocalStorage()
+        }
+
+        return []
     },
 
     addBookToLibrary() {
@@ -81,6 +93,7 @@ const library = {
             addNewBookBtn.hidden = false
             this.updateDisplay()
             addBookForm.reset()
+            storeLocalStorage(myLibrary)
     },
 
     updateDisplay() {
@@ -105,6 +118,7 @@ const library = {
             {
                 this.myLibrary.splice(i, 1)
                 this.updateDisplay()
+                storeLocalStorage(this.myLibrary)
                 break
             }
         }
@@ -119,6 +133,7 @@ const library = {
         {
             book.read = 'Read'
         }
+        storeLocalStorage(this.myLibrary)
         this.updateDisplay()
     },
 
